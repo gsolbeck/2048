@@ -25,3 +25,11 @@ Tile.prototype.serialize = function () {
     value: this.value
   };
 };
+
+Tile.prototype.playSound = function() {
+  var sound = document.getElementById('sound' + this.value);
+
+  if (sound)
+    sound.play();
+
+}
