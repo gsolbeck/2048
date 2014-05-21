@@ -112,8 +112,52 @@ HTMLActuator.prototype.updateScore = function (score) {
   this.scoreContainer.textContent = this.score;
 
   if (difference > 0) {
+    //Finds the next lowest power of two, gives exponent
+    
+    var scoreColor = "#eee4da";
+    console.log(Math.floor(Math.log(difference)/(Math.log(2))));
+    
+    switch (Math.floor(Math.log(difference)/Math.log(2))) {
+        case 1: //2
+          scoreColor = "#eee4da";
+          break;
+        case 2: //4
+          scoreColor = "#ede0c8";
+          break;
+        case 3: //8
+          scoreColor = "#f2b179";
+          break;
+        case 4: //16
+          scoreColor = "#f59563";
+          break;
+        case 5: //32
+          scoreColor = "#f67c5f";
+          break;
+        case 6: //64
+          scoreColor = "#f65e3b";
+          break;
+        case 7: //128
+          scoreColor = "#edcf72";
+          break;
+        case 8: //256
+          scoreColor = "#edcc61";
+          break;
+        case 9: //512
+          scoreColor = "#edc850";
+          break;
+        case 10: //1024
+          scoreColor = "#edc53f";
+          break;
+        case 11: //2048
+          scoreColor = "#edc22e";
+          break;
+        default:
+          scoreColor = "rgba(0,0,0,0)";
+
+    }
     var addition = document.createElement("div");
     addition.classList.add("score-addition");
+    addition.style.background = scoreColor;
     addition.textContent = "+" + difference;
 
     this.scoreContainer.appendChild(addition);
